@@ -2,15 +2,16 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const routes = require('./routes');
 
 const app = express();
 
 app.set('view engine', 'pug');
-
 app.use(morgan('dev'));
-
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
 app.use((req, res, next) => {
@@ -57,11 +58,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-
-// Define a port and start listening for connections.
-
-
-module.exports = app;
-// const port = 8080;
-
-// app.listen(port, () => console.log(`Listening on port ${port}...`));
