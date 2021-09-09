@@ -1,0 +1,10 @@
+//- page-not-found.pug
+
+extends layout.pug
+
+block content
+ div
+   p Sorry, we couldn't find the page that you requested.
+ if stack
+   h3 Stack Trace
+   pre= stack
